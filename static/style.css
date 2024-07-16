@@ -1,0 +1,64 @@
+:root {
+    --pearl: #F1EFE8;
+    --emerald: #0d9781;
+    --resolution-blue: #13283C;
+    --cool-black: #102027;
+  }
+
+body {
+    margin: 0;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+h1 {
+    color: var(--pearl);
+    margin-top: 0;
+}
+
+.sign-up, .jiu-jitsu {
+    height: 100vh;
+    width: 100vw;
+}
+
+.sign-up {
+    background: var(--emerald);
+}
+
+.sign-up-form {
+    width: 80%;
+    min-height: 100px;
+    margin: auto;
+    background-color: var(--cool-black);
+    padding: 10px;
+}
+
+.form-title {
+    margin-top: 0px;
+}
+
+.form-title, .form-txt {
+    color: var(--pearl);
+}
+
+.email-input {
+    display: flex;
+    justify-content: center;
+}
+
+.email-input input {
+    background-color: var(--cool-black);
+    color: var(--pearl);
+    border: 1px solid var(--pearl);
+}
+
+.email-input button {
+    background-color: var(--pearl);
+    color: var(--cool-black);
+}
+
+.jiu-jitsu {
+    background-color: gray;
+}
