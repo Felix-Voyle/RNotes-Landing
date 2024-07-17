@@ -62,3 +62,31 @@ h1 {
 .jiu-jitsu {
     background-color: gray;
 }
+
+.typing-effect {
+    font-family: monospace;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 15px;
+    background-color: var(--pearl);
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to {
+        background-color: transparent;
+    }
+    50% {
+        background-color: var(--pearl);
+    }
+}
+
