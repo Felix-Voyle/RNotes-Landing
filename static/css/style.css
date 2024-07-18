@@ -3,19 +3,90 @@
     --emerald: #0d9781;
     --resolution-blue: #13283C;
     --cool-black: #102027;
-  }
+}
+
+html {
+    font-size: 16px;
+}
+
+.pearl {
+    color: var(--pearl);
+}
+
+.black {
+    color: var(--cool-black)
+}
+
+@font-face {
+    font-family: 'GSans';
+    src: url('/static/fonts/GeneralSans-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.bold {
+    font-family: 'GSans', sans-serif;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'GSans';
+    src: url('/static/fonts/GeneralSans-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GSans';
+    src: url('/static/fonts/GeneralSans-Semibold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+
+.semi-bold {
+    font-family: 'GSans', sans-serif;
+    font-weight: 600;
+}
 
 body {
     margin: 0;
+    font-family: 'GSans', sans-serif;
 }
 
 .txt-center {
     text-align: center;
 }
 
-h1 {
-    color: var(--pearl);
-    margin-top: 0;
+.brand-container {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.brand-container img {
+    width: auto;
+    height: 5rem;
+    margin-top: .9rem;
+}
+
+.intro {
+    width: 90%;
+    margin: auto;
+    font-size: 1rem;
+}
+
+.call-signup {
+    font-size: 1.1rem;
+    width: 85%;
+    margin: auto;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.reward-txt {
+    width: 85%;
+    margin: auto;
+    margin-top: 1.5rem;
 }
 
 .sign-up, .jiu-jitsu {
@@ -32,31 +103,40 @@ h1 {
     min-height: 100px;
     margin: auto;
     background-color: var(--cool-black);
-    padding: 10px;
+    padding: 1.2rem;
+    border-radius: 5px;
 }
 
 .form-title {
     margin-top: 0px;
 }
 
-.form-title, .form-txt {
-    color: var(--pearl);
+.form-txt {
+    font-size: .8rem;
+    margin-block-end: 1.3rem;
 }
 
 .email-input {
     display: flex;
     justify-content: center;
+    height: 2rem;
 }
 
 .email-input input {
     background-color: var(--cool-black);
     color: var(--pearl);
     border: 1px solid var(--pearl);
+    padding: .8rem;
 }
 
 .email-input button {
     background-color: var(--pearl);
     color: var(--cool-black);
+    position: relative;
+    left: 15px;
+    border: none;
+    font-size: .7rem;
+    font-weight: 600;
 }
 
 .jiu-jitsu {
