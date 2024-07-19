@@ -11,21 +11,28 @@
   </head>
   <body>
     <main>
-      <div class="sign-up">
-        <div class="brand-container"><img src="{{ url_for('static', filename='images/RollBanner.png') }}"/></div>
-        <div class="intro black">
-          <p>Our aim is to build a digital BJJ ecosystem that supports practitioners, athletes and coaches at all levels. The Roll app is our first step on that journey.</p>
-          <p>The Roll app (v1) is practitioner focused and is designed to accelerate your learning by structuring your off-mat reflections.</p>
-          <p>Future versions will be increasingly community focussed in both virtual and physical spaces.</p>
-        </div>  
-        <p class="pearl bold call-signup">Sign up for our beta.</p>
-        <form class="sign-up-form" action="">
-          <h4 class="form-title semi-bold txt-center pearl">Subscribe</h4>
-          <p class="form-txt txt-center pearl">Be the first to hear about our soft launch events.</p>
-          <span class="email-input pearl"><input type="email" placeholder="Email"><button class="signup-btn black">Sign Up</button></span>
-        </form>
-        <p class="reward-txt pearl semi-bold">The first 1000 users will be rewarded within the Roll ecosystem.</p>
-      </div>
+      <div class="container">
+        <header class="brand-container">
+            <img src="{{ url_for('static', filename='images/RollBanner.png') }}" alt="Roll Logo" class="logo">
+        </header>
+        <main class="flex-signup">
+            <section class="intro black">
+                <p>Our aim is to build a digital BJJ ecosystem that supports practitioners, athletes and coaches at all levels. The Roll app is our first step on that journey.</p>
+                <p>The Roll app (v1) is practitioner focused and is designed to accelerate your learning by structuring your off-mat reflections.</p>
+                <p>Future versions will be increasingly community focussed in both virtual and physical spaces.</p>
+            </section>  
+            <p class="pearl bold call-signup">Sign up for our beta.</p>
+            <form class="sign-up-form" action="">
+                <h4 class="form-title semi-bold txt-center pearl">Subscribe</h4>
+                <p class="form-txt txt-center pearl">Be the first to hear about our soft launch events.</p>
+                <span class="email-input pearl">
+                    <input type="email" placeholder="Email" class="email-field">
+                    <button type="submit" class="signup-btn black">Sign Up</button>
+                </span>
+            </form>
+            <p class="reward-txt pearl semi-bold">The first 1000 users will be rewarded within the Roll ecosystem.</p>
+        </main>
+    </div>
       <div class="jiu-jitsu">
         <h4 class="bold pearl">JIU JITSU IS:</h4>
         <div class="typing-effect">
