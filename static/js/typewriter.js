@@ -28,8 +28,20 @@ function typeWriter() {
       currentLetterIndex = 0;
       typingTimeout = setTimeout(typeWriter, wordPause);
     }
+  } else {
+    additionalEffect();
   }
 }
+
+const additionalEffect = () => {
+  const btmLine = document.getElementById('btmLine');
+  btmLine.classList.add('btm-show');
+
+  setTimeout(() => {
+    const noLimits = document.getElementById('no-limits');
+    noLimits.classList.add('no-limits-show');
+  }, 2000);
+};
 
 document.addEventListener('DOMContentLoaded', (event) => {
   const observedElement = document.getElementById("typing");
@@ -37,7 +49,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const observerOptions = {
     root: null, // Use the viewport as the container
     rootMargin: '0px',
-    threshold: 1.0 // Trigger when 10% of the element is visible
+    threshold: 1.0 // Trigger when 100% of the element is visible
   };
 
   const observerCallback = (entries, observer) => {

@@ -11,7 +11,7 @@
   </head>
   <body>
     <main>
-      <div class="container">
+      <div class="signup-container">
         <header class="brand-container">
             <img src="{{ url_for('static', filename='images/RollBanner.png') }}" alt="Roll Logo" class="logo">
         </header>
@@ -33,11 +33,14 @@
             <p class="reward-txt pearl semi-bold">The first 1000 users will be rewarded within the Roll ecosystem.</p>
         </main>
     </div>
-      <div class="jiu-jitsu">
-        <h4 class="bold pearl">JIU JITSU IS:</h4>
+      <div class="jiu-jitsu-container">
+        <h4 class="bold pearl jj-title">JIU JITSU IS:</h4>
+        <hr class="typing-top">
         <div class="typing-effect">
           <span id="typing"></span><span class="cursor"></span>
         </div>
+        <hr class="typing-btm" id="btmLine">
+        <span class="bold no-limits emerald" id="no-limits">ROLL WITHOUT LIMITS</span>
       </div> 
     </main>
     <script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>

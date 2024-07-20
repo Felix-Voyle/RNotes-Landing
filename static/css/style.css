@@ -8,9 +8,11 @@
 .pearl {
     color: var(--pearl);
 }
-
 .black {
     color: var(--cool-black)
+}
+.emerald {
+    color: var(--emerald);
 }
 
 @font-face {
@@ -53,10 +55,10 @@ body {
     margin: 0;
     padding: 0;
     background-color: #1d1f21;
-    color: #f4f4f4;
+    color: var(--pearl);
 }
 
-.container {
+.signup-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -159,8 +161,35 @@ header {
 }
 
 /* Jiu Jitsu section */
-.jiu-jitsu {
-    background-color: gray;
+.jiu-jitsu-container {
+    background-color: var(--cool-black);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+}
+
+.jj-title {
+    font-size: 2rem;
+}
+
+.typing-top {
+    width: 80%;
+    margin-bottom: 3rem;
+}
+
+.typing-btm {
+    visibility: none;
+    margin-top: 3rem;
+    opacity: 0;
+    width: 0;
+    transition: width 1.5s, opacity .5s;
+}
+
+.typing-btm.btm-show {
+    width: 80%;
+    opacity: 1;
+    visibility: visible;
 }
 
 .typing-effect {
@@ -171,6 +200,8 @@ header {
     word-break: break-word;
     overflow: hidden;
     display: inline-block;
+    font-size: 1.5rem;
+    letter-spacing: .5rem;
 }
 
 .cursor {
@@ -179,6 +210,22 @@ header {
     height: 15px;
     background-color: var(--pearl);
     animation: blink-caret 0.75s step-end infinite;
+}
+
+.no-limits {
+    opacity: 0;
+    margin-top: 0;
+    transition: opacity 2s, margin-top 2s;
+    font-size: 3rem;
+    letter-spacing: .5rem;
+    text-align: center;
+    visibility: hidden;
+}
+
+.no-limits.no-limits-show {
+    opacity: 1;
+    margin-top: 5rem;
+    visibility: visible;
 }
 
 @keyframes blink-caret {
