@@ -174,20 +174,22 @@ header {
 }
 
 .typing-top {
-    width: 80%;
     margin-bottom: 3rem;
 }
 
 .typing-btm {
-    visibility: none;
     margin-top: 3rem;
+}
+
+.typing-btm, .typing-top {
+    visibility: none;
     opacity: 0;
     width: 0;
     transition: width 1.5s, opacity .5s;
 }
 
-.typing-btm.btm-show {
-    width: 80%;
+.typing-btm.line-show, .typing-top.line-show {
+    width: 100%;
     opacity: 1;
     visibility: visible;
 }
@@ -208,8 +210,14 @@ header {
     display: inline-block;
     width: 2px;
     height: 15px;
+    opacity: 0;
+    transition: opacity 0s;
     background-color: var(--pearl);
     animation: blink-caret 0.75s step-end infinite;
+}
+
+.cursor-show {
+    opacity: 1;
 }
 
 .no-limits {

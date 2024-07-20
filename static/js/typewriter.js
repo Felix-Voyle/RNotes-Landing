@@ -1,4 +1,4 @@
-var words = [
+const words = [
   'Balance.', 'Leverage.', 'Technique.', 'Control.', 'Submission.', 'Escape.', 'Pressure.', 'Posture.',
   'Flexibility.', 'Agility.', 'Endurance.', 'Strength.', 'Timing.', 'Precision.', 'Strategy.', 'Adaptation.',
   'Flow.', 'Transition.', 'Mobility.', 'Stability.', 'Focus.', 'Discipline.', 'Patience.', 'Determination.',
@@ -9,33 +9,36 @@ var words = [
   'Simplicity.', 'Complexity.', 'Variety.', 'Versatility.', 'Refinement.'
 ];
 
-var currentWordIndex = 0;
-var currentLetterIndex = 0;
-var typingSpeed = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
-var wordPause = Math.floor(Math.random() * (300 - 200 + 1)) + 200;
-var typingTimeout;
+let currentWordIndex = 0;
+let currentLetterIndex = 0;
+let typingTimeout;
+const typingSpeed = () => Math.floor(Math.random() * (100 - 50 + 1)) + 50;
+const wordPause = () => Math.floor(Math.random() * (300 - 200 + 1)) + 200;
+let hasBeenInView = false; // Flag to track if the element has been viewed initially
 
+// Function to type out words
 function typeWriter() {
   if (currentWordIndex < words.length) {
-    var currentWord = words[currentWordIndex];
+    const currentWord = words[currentWordIndex];
     if (currentLetterIndex < currentWord.length) {
       document.getElementById("typing").innerHTML += currentWord.charAt(currentLetterIndex);
       currentLetterIndex++;
-      typingTimeout = setTimeout(typeWriter, typingSpeed);
+      typingTimeout = setTimeout(typeWriter, typingSpeed());
     } else {
       document.getElementById("typing").innerHTML += ' ';
       currentWordIndex++;
       currentLetterIndex = 0;
-      typingTimeout = setTimeout(typeWriter, wordPause);
+      typingTimeout = setTimeout(typeWriter, wordPause());
     }
   } else {
     additionalEffect();
   }
 }
 
+// Function to show the additional effect
 const additionalEffect = () => {
   const btmLine = document.getElementById('btmLine');
-  btmLine.classList.add('btm-show');
+  btmLine.classList.add('line-show');
 
   setTimeout(() => {
     const noLimits = document.getElementById('no-limits');
@@ -43,7 +46,40 @@ const additionalEffect = () => {
   }, 2000);
 };
 
-document.addEventListener('DOMContentLoaded', (event) => {
+// Function to show the cursor
+const cursorShow = () => {
+  const cursor = document.getElementById('cursor');
+  cursor.classList.add('cursor-show');
+};
+
+// Intersection observer callback function
+const observerCallback = (entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      console.log('Element is in view!');
+      if (!typingTimeout) {
+        const topLine = document.getElementById('topLine');
+        topLine.classList.add('line-show');
+        
+        if (!hasBeenInView) {
+          // Apply delay only the first time the element is viewed
+          setTimeout(cursorShow, 2000);
+          setTimeout(typeWriter, 2000);
+          hasBeenInView = true; // Set the flag to true after the initial view
+        } else {
+          typeWriter();
+        }
+      }
+    } else {
+      console.log('Element is out of view!');
+      clearTimeout(typingTimeout);
+      typingTimeout = null;
+    }
+  });
+};
+
+// Setup the observer when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
   const observedElement = document.getElementById("typing");
 
   const observerOptions = {
@@ -52,22 +88,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     threshold: 1.0 // Trigger when 100% of the element is visible
   };
 
-  const observerCallback = (entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        console.log('Element is in view!');
-        if (!typingTimeout) {
-          typeWriter();
-        }
-      } else {
-        console.log('Element is out of view!');
-        clearTimeout(typingTimeout);
-        typingTimeout = null;
-      }
-    });
-  };
-
   const observer = new IntersectionObserver(observerCallback, observerOptions);
   observer.observe(observedElement);
 });
-
