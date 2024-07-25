@@ -12,8 +12,8 @@ const words = [
 let currentWordIndex = 0;
 let currentLetterIndex = 0;
 let typingTimeout;
-const typingSpeed = () => Math.floor(Math.random() * (100 - 50 + 1)) + 50;
-const wordPause = () => Math.floor(Math.random() * (300 - 200 + 1)) + 200;
+const typingSpeed = 20
+const wordPause = 20
 let hasBeenInView = false; // Flag to track if the element has been viewed initially
 
 // Function to type out words
@@ -23,12 +23,12 @@ function typeWriter() {
     if (currentLetterIndex < currentWord.length) {
       document.getElementById("typing").innerHTML += currentWord.charAt(currentLetterIndex);
       currentLetterIndex++;
-      typingTimeout = setTimeout(typeWriter, typingSpeed());
+      typingTimeout = setTimeout(typeWriter, typingSpeed);
     } else {
       document.getElementById("typing").innerHTML += ' ';
       currentWordIndex++;
       currentLetterIndex = 0;
-      typingTimeout = setTimeout(typeWriter, wordPause());
+      typingTimeout = setTimeout(typeWriter, wordPause);
     }
   } else {
     additionalEffect();
@@ -40,10 +40,17 @@ const additionalEffect = () => {
   const btmLine = document.getElementById('btmLine');
   btmLine.classList.add('line-show');
 
+  // First timeout for the 'btmLine' effect
   setTimeout(() => {
     const noLimits = document.getElementById('no-limits');
     noLimits.classList.add('no-limits-show');
-  }, 2000);
+
+    // Second timeout for the 'noLimits' effect, which then triggers the 'roll' effect
+    setTimeout(() => {
+      const roll = document.getElementById('roll');
+      roll.classList.add('roll-show');
+    }, 2000); // Adjust this timing based on how long the 'no-limits-show' effect takes
+  }, 2000); // Adjust this timing based on how long the 'line-show' effect takes
 };
 
 // Function to show the cursor
