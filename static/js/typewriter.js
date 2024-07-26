@@ -45,12 +45,12 @@ const additionalEffect = () => {
     const noLimits = document.getElementById('no-limits');
     noLimits.classList.add('no-limits-show');
 
-    // Second timeout for the 'noLimits' effect, which then triggers the 'roll' effect
-    setTimeout(() => {
-      const roll = document.getElementById('roll');
-      roll.classList.add('roll-show');
-    }, 2000); // Adjust this timing based on how long the 'no-limits-show' effect takes
-  }, 2000); // Adjust this timing based on how long the 'line-show' effect takes
+    // potential timeout for the 'noLimits' effect, which then triggers the 'roll' effect
+    //setTimeout(() => {
+    //  const roll = document.getElementById('roll');
+    //  roll.classList.add('roll-show');
+    //}, 2000); 
+  }, 2000); 
 };
 
 // Function to show the cursor

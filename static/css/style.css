@@ -220,6 +220,7 @@ header {
     opacity: 1;
 }
 
+/*potential roll in animation to be added later
 .roll {
     transform-origin: 0% 50%;
     transform: rotate(180deg);
@@ -232,6 +233,7 @@ header {
     opacity: 1;
     transform: rotate(360deg);
 }
+*/
 
 .no-limits {
     opacity: 0;
