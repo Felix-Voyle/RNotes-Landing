@@ -10,8 +10,16 @@
     <link rel="icon" href="{{ url_for('static', filename='images/RNLogo.png') }}" type="image/x-icon">
   </head>
   <body>
-    <main>
-      <div class="signup-container">
+    <div class="jiu-jitsu-container">
+      <h4 class="bold pearl jj-title" id="jjTitle">JIU JITSU IS:</h4>
+      <hr class="typing-top" id="topLine">
+      <div class="typing-effect">
+        <span id="typing"></span><span class="cursor" id="cursor"></span>
+      </div>
+      <hr class="typing-btm" id="btmLine">
+      <span class="bold no-limits emerald" id="no-limits"><span class="roll" id="roll">ROLL&nbsp;</span>WITHOUT LIMITS</span>
+    </div>
+      <div class="signup-container" id="subscribeSection">
         <header class="brand-container">
             <img src="{{ url_for('static', filename='images/wordmark_white.png') }}" alt="Roll Logo" class="logo">
         </header>
@@ -29,17 +37,7 @@
             </form>
             <p class="reward-txt pearl semi-bold">The first 1000 users will be rewarded within the Roll ecosystem.</p>
         </main>
-    </div>
-      <div class="jiu-jitsu-container">
-        <h4 class="bold pearl jj-title">JIU JITSU IS:</h4>
-        <hr class="typing-top" id="topLine">
-        <div class="typing-effect">
-          <span id="typing"></span><span class="cursor" id="cursor"></span>
-        </div>
-        <hr class="typing-btm" id="btmLine">
-        <span class="bold no-limits emerald" id="no-limits"><span class="roll" id="roll">ROLL&nbsp;</span>WITHOUT LIMITS</span>
-      </div> 
-    </main>
+    </div> 
     <script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
     <script src="{{ url_for('static', filename='js/subscribe.js') }}"></script>
   </body>

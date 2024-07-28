@@ -9,12 +9,13 @@ const words = [
   'Simplicity.', 'Complexity.', 'Variety.', 'Versatility.', 'Refinement.'
 ];
 
+const typingSpeed = 20;
+const wordPause = 20;
 let currentWordIndex = 0;
 let currentLetterIndex = 0;
 let typingTimeout;
-const typingSpeed = 20
-const wordPause = 20
-let hasBeenInView = false; // Flag to track if the element has been viewed initially
+let hasScrolled = false;
+let hasBeenInView = false;
 
 // Function to type out words
 function typeWriter() {
@@ -32,53 +33,65 @@ function typeWriter() {
     }
   } else {
     additionalEffect();
+    scrollToSubscribeSection();
+  }
+}
+
+function scrollToSubscribeSection() {
+  if (!hasScrolled) {
+    setTimeout(() => {
+      document.getElementById("subscribeSection").scrollIntoView({
+        behavior: "smooth"
+      });
+      hasScrolled = true;
+    }, 4000);
   }
 }
 
 // Function to show the additional effect
-const additionalEffect = () => {
+function additionalEffect() {
   const btmLine = document.getElementById('btmLine');
   btmLine.classList.add('line-show');
 
-  // First timeout for the 'btmLine' effect
   setTimeout(() => {
     const noLimits = document.getElementById('no-limits');
     noLimits.classList.add('no-limits-show');
+  }, 2000);
+}
 
-    // potential timeout for the 'noLimits' effect, which then triggers the 'roll' effect
-    //setTimeout(() => {
-    //  const roll = document.getElementById('roll');
-    //  roll.classList.add('roll-show');
-    //}, 2000); 
-  }, 2000); 
-};
+function beginEffect() {
+  const jjTitle = document.getElementById('jjTitle');
+  jjTitle.classList.add('jj-title-show');
+
+  setTimeout(() => {
+    const topLine = document.getElementById('topLine');
+    topLine.classList.add('line-show');
+  }, 1000);
+}
 
 // Function to show the cursor
-const cursorShow = () => {
+function cursorShow() {
   const cursor = document.getElementById('cursor');
   cursor.classList.add('cursor-show');
-};
+}
 
 // Intersection observer callback function
-const observerCallback = (entries, observer) => {
+const observerCallback = (entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      console.log('Element is in view!');
       if (!typingTimeout) {
-        const topLine = document.getElementById('topLine');
-        topLine.classList.add('line-show');
-        
+        beginEffect();
         if (!hasBeenInView) {
-          // Apply delay only the first time the element is viewed
-          setTimeout(cursorShow, 2000);
-          setTimeout(typeWriter, 2000);
-          hasBeenInView = true; // Set the flag to true after the initial view
+          setTimeout(() => {
+            cursorShow();
+            typeWriter();
+          }, 2000);
+          hasBeenInView = true;
         } else {
           typeWriter();
         }
       }
     } else {
-      console.log('Element is out of view!');
       clearTimeout(typingTimeout);
       typingTimeout = null;
     }
