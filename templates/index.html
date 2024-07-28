@@ -16,17 +16,14 @@
             <img src="{{ url_for('static', filename='images/wordmark_white.png') }}" alt="Roll Logo" class="logo">
         </header>
         <main class="flex-signup">
-            <section class="intro black">
-                <p>Our aim is to build a digital BJJ ecosystem that supports practitioners, athletes and coaches at all levels. The Roll app is our first step on that journey.</p>
-                <p>The Roll app (v1) is practitioner focused and is designed to accelerate your learning by structuring your off-mat reflections.</p>
-                <p>Future versions will be increasingly community focussed in both virtual and physical spaces.</p>
-            </section>  
-            <p class="pearl bold call-signup">Sign up for our beta.</p>
-            <form class="sign-up-form" method="post" action="/subscribe">
+            <h1 class="intro bold pearl">Data-driven analytics to level-up your game</h1>  
+            <h2 class="pearl bold call-signup">Sign up for our beta.</h2>
+            <form class="sign-up-form" id="subscribeForm" method="post">
                 <h4 class="form-title semi-bold txt-center pearl">Subscribe</h4>
-                <p class="form-txt txt-center pearl">Be the first to hear about our soft launch events.</p>
+                <p class="form-txt txt-center pearl">Receive updates and exclusive access to our beta.</p>
                 <span class="email-input pearl">
-                    <input type="email" placeholder="Email" class="email-field" name="email">
+                    <input type="email" placeholder="Email" class="email-field" id="email" name="email">
+                    <p id="responseMessage"></p>
                     <button type="submit" class="signup-btn black">Sign Up</button>
                 </span>
             </form>
@@ -44,5 +41,6 @@
       </div> 
     </main>
     <script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/subscribe.js') }}"></script>
   </body>
 </html>

@@ -74,7 +74,8 @@ header {
 }
 
 .logo {
-    width: 80px;
+    width: 60%;
+    max-width: 250px;
     margin-bottom: 2rem;
 }
 
@@ -91,6 +92,7 @@ header {
 
 .intro {
     margin-bottom: 2rem;
+    font-size: 1.8rem;
 }
 
 .intro p {
@@ -274,10 +276,6 @@ header {
         padding: 1.5rem 0;
     }
 
-    .logo {
-        width: 60px;
-    }
-
     .flex-signup {
         width: 90%;
     }
@@ -306,10 +304,6 @@ header {
 @media (max-width: 375px) {
     html {
         font-size: 50%; /* 1rem = 8px */
-    }
-
-    .logo {
-        width: 50px;
     }
 
     .call-signup {

@@ -7,6 +7,10 @@ import requests
 
 app = Flask(__name__)
 
+api_key = os.getenv('SENDGRID_API_KEY')
+list_id = os.getenv('LIST_ID')
+VALIDATION_API_URL = "https://api.sendgrid.com/v3/validations/email"
+
 # Route to render the index.html template
 @app.route('/')
 def index():
@@ -16,8 +20,6 @@ def index():
 @app.route('/subscribe', methods=['POST'])
 def subscribe():
     email = request.form.get('email')
-    api_key = os.getenv('SENDGRID_API_KEY')
-    list_id = os.getenv('LIST_ID')
 
     # Define the new contact
     data = {
@@ -55,7 +57,7 @@ def subscribe():
         if response.status_code == 202:
             return jsonify({'message': 'Subscription successful'}), 202
         else:
-            return jsonify({'error': response.text, 'message': 'An error occurred'}), response.status_code
+            return jsonify({'error': response.text, 'message': 'An error occurred please try again later.'}), response.status_code
 
     except Exception as e:
         # Prepare exception details for debugging
@@ -65,7 +67,7 @@ def subscribe():
         }
 
         # Return detailed error response
-        return jsonify({'message': 'An error occurred', **error_details}), 500
+        return jsonify({'message': 'An error occurred please try again later.', **error_details}), 500
 
 
 if __name__ == '__main__':
