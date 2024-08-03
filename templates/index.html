@@ -10,6 +10,7 @@
     <link rel="icon" href="{{ url_for('static', filename='images/RNLogo.png') }}" type="image/x-icon">
   </head>
   <body>
+    <section class="jj-section">
     <div class="jiu-jitsu-container">
       <h4 class="bold pearl jj-title" id="jjTitle">JIU JITSU IS:</h4>
       <hr class="typing-top" id="topLine">
@@ -17,25 +18,30 @@
         <span id="typing"></span><span class="cursor" id="cursor"></span>
       </div>
       <hr class="typing-btm" id="btmLine">
-      <span class="bold no-limits emerald" id="no-limits"><span class="roll" id="roll">ROLL&nbsp;</span>WITHOUT LIMITS</span>
+      <div class="no-limits" id="no-limits">
+        <span class="bold no-limits-txt emerald"><span class="roll" id="roll">ROLL&nbsp;</span>WITHOUT LIMITS</span>
+        <img class="no-limits-brand" src="{{ url_for('static', filename='images/BMark_pearl.png') }}"/>
+      </div>
+    </section>
     </div>
       <div class="signup-container" id="subscribeSection">
         <header class="brand-container">
             <img src="{{ url_for('static', filename='images/wordmark_white.png') }}" alt="Roll Logo" class="logo">
         </header>
         <main class="flex-signup">
-            <h1 class="intro bold pearl">Data-driven analytics to level-up your game</h1>  
-            <h2 class="pearl bold call-signup">Sign up for our beta.</h2>
+            <h1 class="intro bold pearl">COMING SOON</h1>  
+            <h2 class="pearl bold call-info">Data-driven analytics to level-up your game</h2>
             <form class="sign-up-form" id="subscribeForm" method="post">
                 <h4 class="form-title semi-bold txt-center pearl">Subscribe</h4>
-                <p class="form-txt txt-center pearl">Receive updates and exclusive access to our beta.</p>
+                <p class="form-txt txt-center pearl">Stay updated and get early access to our launch.</p>
                 <span class="email-input pearl">
                     <input type="email" placeholder="Email" class="email-field" id="email" name="email">
                     <p id="responseMessage"></p>
-                    <button type="submit" class="signup-btn black">Sign Up</button>
+                    <button type="submit" class="signup-btn black" id="submitButton">
+                      <span id="buttonText">Sign Up</span>
+                  </button>
                 </span>
             </form>
-            <p class="reward-txt pearl semi-bold">The first 1000 users will be rewarded within the Roll ecosystem.</p>
         </main>
     </div> 
     <script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>

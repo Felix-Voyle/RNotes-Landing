@@ -46,6 +46,13 @@
     font-weight: 600;
 }
 
+@font-face {
+    font-family: 'Smono';
+    src: url('/static/fonts/SpaceMono-Regular.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
 html {
     font-size: 62.5%;
 }
@@ -62,7 +69,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
+    padding: 0 2rem 0 2rem;
     background: var(--emerald);
     min-height: 100vh;
 }
@@ -70,7 +77,7 @@ body {
 header {
     width: 100%;
     text-align: center;
-    padding: 2rem 0;
+    padding: 5rem 0;
 }
 
 .logo {
@@ -92,7 +99,8 @@ header {
 
 .intro {
     margin-bottom: 2rem;
-    font-size: 2.1rem;
+    font-size: 3rem;
+    text-shadow: -1px 1px var(--cool-black);
 }
 
 .intro p {
@@ -101,30 +109,31 @@ header {
     margin-bottom: 1rem;
 }
 
-.call-signup {
+.call-info {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 2rem;
 }
 
 .sign-up-form {
-    background: #222;
+    background: var(--pearl);
     padding: 2rem;
     border-radius: 8px;
     margin-bottom: 2rem;
+    box-shadow: 0px 0px 10px var(--resolution-blue);
 }
 
 .form-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
     margin-top: 1rem;
-    color: #fff;
+    color: var(--cool-black);
 }
 
 .form-txt {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     margin-bottom: 2rem;
-    color: #ccc;
+    color: var(--resolution-blue);
 }
 
 .email-input {
@@ -137,35 +146,66 @@ header {
     width: 80%;
     padding: 1rem;
     margin-bottom: 1rem;
-    border: none;
+    border: 1.5px solid var(--resolution-blue);
     border-radius: 4px;
+    color: var(--resolution-blue);
     font-size: 1.4rem;
+    font-family: 'GSans';
 }
 
 .signup-btn {
     padding: 1rem 2rem;
+    width: 85px;
+    height: 35px;
     border: none;
     border-radius: 4px;
-    background: #01796f;
-    color: #fff;
+    background: var(--resolution-blue);
+    color: var(--pearl);
     font-size: 1.4rem;
     cursor: pointer;
     margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.signup-btn:hover {
-    background: #026f66;
+.loader {
+    width: 22px; /* Adjust width to be smaller */
+    height: 22px;
+    aspect-ratio: 1;
+    border: 5px solid #ddd; /* Thinner border */
+    border-style: dotted;
+    border-radius: 50%;
+    position: relative;
+    transform: rotate(45deg);
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.reward-txt {
-    font-size: 1.4rem;
-    color: #f4f4f4;
+.loader::before {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 5px solid var(--resolution-blue);
+    animation: l18 1s infinite linear;
+}
+
+@keyframes l18 {
+    0%   {clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)}
+    25%  {clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)}
+    50%  {clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)}
+    75%  {clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)}
+    100% {clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)}
 }
 
 /* Jiu Jitsu section */
-.jiu-jitsu-container {
+.jj-section {
     background-color: var(--cool-black);
     min-height: 100vh;
+}
+
+.jiu-jitsu-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -204,7 +244,7 @@ header {
 }
 
 .typing-effect {
-    font-family: monospace;
+    font-family: 'Smono', monospace;
     white-space: normal;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -212,8 +252,8 @@ header {
     overflow: hidden;
     display: inline-block;
     font-size: 1.5rem;
-    letter-spacing: .5rem;
-    min-height: 421px;
+    letter-spacing: .2rem;
+    min-height: 423px;
 }
 
 .cursor {
@@ -245,19 +285,28 @@ header {
 }
 */
 
+.no-limits-txt {
+    font-size: 1.3rem;
+    letter-spacing: .5rem;
+}
+
+.no-limits-brand {
+    height: 2rem;
+}
+
 .no-limits {
     opacity: 0;
     margin-top: 0;
     transition: opacity 2s, margin-top 2s;
-    font-size: 3rem;
-    letter-spacing: .5rem;
-    text-align: center;
     visibility: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .no-limits.no-limits-show {
     opacity: 1;
-    margin-top: 3rem;
+    margin-top: 1rem;
     visibility: visible;
 }
 
@@ -280,28 +329,12 @@ header {
         padding: 1rem;
     }
 
-    header {
-        padding: 1.5rem 0;
-    }
-
     .flex-signup {
         width: 90%;
     }
 
-    .call-signup {
-        font-size: 2rem;
-    }
-
     .sign-up-form {
         padding: 1.5rem;
-    }
-
-    .form-title {
-        font-size: 1.6rem;
-    }
-
-    .form-txt, .reward-txt {
-        font-size: 1.2rem;
     }
 
     .email-field, .signup-btn {
@@ -314,19 +347,16 @@ header {
         font-size: 50%; /* 1rem = 8px */
     }
 
-    .call-signup {
-        font-size: 1.9rem;
-    }
-
-    .form-title {
-        font-size: 1.4rem;
-    }
-
-    .form-txt, .reward-txt {
-        font-size: 1.1rem;
-    }
-
     .email-field, .signup-btn {
         font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    header {
+        padding: 5rem 0 0 0;
+    }
+    .sign-up-form {
+        padding: 1rem;
     }
 }

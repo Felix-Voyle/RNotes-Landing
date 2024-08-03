@@ -11,10 +11,13 @@ document.getElementById("email").addEventListener("input", function(event) {
 document.getElementById("subscribeForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent the form from submitting the traditional way
 
+    const submitButton = document.getElementById('submitButton');
+    const buttonText = document.getElementById('buttonText');
+    buttonText.innerHTML = '<div class="loader"></div>';
     
-    var email = document.getElementById("email").value;
-    var responseMessage = document.getElementById("responseMessage");
-    var xhr = new XMLHttpRequest();
+    const email = document.getElementById("email").value;
+    const responseMessage = document.getElementById("responseMessage");
+    const xhr = new XMLHttpRequest();
     xhr.open("POST", "/subscribe", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
@@ -27,10 +30,14 @@ document.getElementById("subscribeForm").addEventListener("submit", function(eve
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 202) {
+                buttonText.innerHTML = '<span class="status-icon">✔️</span>';
+                submitButton.style.color = 'green';
                 responseMessage.textContent = "Subscription successful!";
                 responseMessage.style.color = "green";
             } else {
-                var jsonResponse = JSON.parse(xhr.responseText);
+                const jsonResponse = JSON.parse(xhr.responseText);
+                buttonText.innerHTML = '<span class="status-icon">❌</span>'; // Cross
+                submitButton.style.color = 'red';
                 responseMessage.textContent = jsonResponse.message;
                 responseMessage.style.color = "red";
             }
