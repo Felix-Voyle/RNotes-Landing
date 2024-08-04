@@ -53,10 +53,6 @@
     font-style: normal;
 }
 
-html {
-    font-size: 62.5%;
-}
-
 body {
     font-family: 'GSans', sans-serif;
     margin: 0;
@@ -78,6 +74,7 @@ header {
     width: 100%;
     text-align: center;
     padding: 5rem 0;
+    margin-top: 1rem;
 }
 
 .logo {
@@ -89,7 +86,7 @@ header {
 .flex-signup {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     flex-grow: 1;
     max-width: 600px;
     padding: 2rem;
@@ -98,21 +95,15 @@ header {
 }
 
 .intro {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     font-size: 3rem;
     text-shadow: -1px 1px var(--cool-black);
-}
-
-.intro p {
-    font-size: 1.6rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
 }
 
 .call-info {
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .sign-up-form {
@@ -120,6 +111,7 @@ header {
     padding: 2rem;
     border-radius: 8px;
     margin-bottom: 2rem;
+    margin-top: 2rem;
     box-shadow: 0px 0px 10px var(--resolution-blue);
 }
 
@@ -155,8 +147,8 @@ header {
 
 .signup-btn {
     padding: 1rem 2rem;
-    width: 85px;
-    height: 35px;
+    width: 9rem;
+    height: 4rem;
     border: none;
     border-radius: 4px;
     background: var(--resolution-blue);
@@ -239,6 +231,10 @@ header {
 .jj-section {
     background-color: var(--cool-black);
     min-height: 100vh;
+    min-width: 100%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
 }
 
 .jiu-jitsu-container {
@@ -246,6 +242,8 @@ header {
     flex-direction: column;
     justify-content: space-evenly;
     padding: 2rem 5rem 2rem 5rem;
+    margin: auto;
+    width: 80%;
 }
 
 .jj-title {
@@ -277,6 +275,8 @@ header {
     width: 100%;
     opacity: 1;
     visibility: visible;
+    align-self: center;
+    margin-left: auto;
 }
 
 .typing-effect {
@@ -289,7 +289,6 @@ header {
     display: inline-block;
     font-size: 1.5rem;
     letter-spacing: .2rem;
-    min-height: 423px;
 }
 
 .cursor {
@@ -338,6 +337,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .no-limits.no-limits-show {
@@ -356,9 +356,22 @@ header {
 }
 
 /* Media Queries for different screen sizes */
+@media (max-width: 375px) {
+    html {
+        font-size: 50%;
+    }
+
+    .email-field, .signup-btn {
+        font-size: 1.1rem;
+    }
+    .jiu-jitsu-container {
+        width: 70%;
+    }
+}
+
 @media (max-width: 768px) {
     html {
-        font-size: 56.25%; /* 1rem = 9px */
+        font-size: 52.25%;
     }
 
     .container {
@@ -378,21 +391,24 @@ header {
     }
 }
 
-@media (max-width: 375px) {
-    html {
-        font-size: 50%; /* 1rem = 8px */
-    }
-
-    .email-field, .signup-btn {
-        font-size: 1.1rem;
-    }
-}
-
 @media (min-width: 768px) {
+    html {
+        font-size: 60%;
+    }
     header {
         padding: 5rem 0 0 0;
     }
     .sign-up-form {
         padding: 1rem;
+    }
+    .jiu-jitsu-container {
+        max-width: 700px;
+        min-width: 700px;
+    }
+}
+
+@media (min-width: 1024px) {
+    html {
+        font-size: 70%;
     }
 }
