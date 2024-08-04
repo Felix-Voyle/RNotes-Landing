@@ -250,6 +250,7 @@ header {
     font-size: 2rem;
     opacity: 0;
     transition: opacity 1s;
+    margin-top: 1rem;
 }
 
 .jj-title-show {
