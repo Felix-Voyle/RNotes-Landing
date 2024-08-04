@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 api_key = os.getenv('SENDGRID_API_KEY')
 list_id = os.getenv('LIST_ID')
-VALIDATION_API_URL = "https://api.sendgrid.com/v3/validations/email"
+
 
 # Route to render the index.html template
 @app.route('/')

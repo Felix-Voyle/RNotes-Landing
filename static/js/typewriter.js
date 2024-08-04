@@ -9,8 +9,8 @@ const words = [
   'Simplicity.', 'Complexity.', 'Variety.', 'Versatility.', 'Refinement.'
 ];
 
-const typingSpeed = 20;
-const wordPause = 20;
+const typingSpeed = 15;
+const wordPause = 10;
 let currentWordIndex = 0;
 let currentLetterIndex = 0;
 let typingTimeout;
