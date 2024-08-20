@@ -26,7 +26,10 @@ def subscribe():
         "list_ids": [list_id],
         "contacts": [
             {
-                "email": email
+                "email": email,
+                "custom_fields": {
+                    "feedback_sent": "FALSE"
+                }
             }
         ]
     }
