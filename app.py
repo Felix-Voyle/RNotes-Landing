@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 
 from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
+from sendgrid.helpers.mail import Mail, From, To, Asm
 
 import os
 import json
@@ -56,23 +56,27 @@ def check_not_subscribed(email):
                 break
 
     except requests.exceptions.RequestException as e:
-        # Catch requests-specific exceptions
         print(f"Request exception: {str(e)}")
     except Exception as e:
-        # Catch other exceptions
         print(f"Error checking subscribed users: {str(e)}")
 
     return False
 
 
-
 def send_email(email):
+
+    suppression_group_id = 43950
+
     message = Mail(
-        from_email='noreply@roll.global',
-        to_emails=email,
-        subject='Sending with Twilio SendGrid is Fun',
-        html_content=render_template('subscription_template.html')
+        from_email=From('noreply@roll.global', 'Roll'),
+        to_emails=To(email),
+        subject='Welcome to Roll!',
     )
+
+    asm = Asm(group_id=suppression_group_id)
+    message.asm = asm
+
+    message.template_id = 'd-c00c959708bf4bbd91ab5c1784b5f9f0'
 
     try:
         sg = SendGridAPIClient(os.getenv('EMAIL_API'))
@@ -93,7 +97,6 @@ def subscribe():
     if check_not_subscribed(email):
         return jsonify({'message': 'already signed up'}), 400
 
-    # Define the new contact
     data = {
         "list_ids": [list_id],
         "contacts": [
@@ -106,17 +109,14 @@ def subscribe():
         ]
     }
 
-    # Convert the dictionary to a JSON string
     json_data = json.dumps(data)
 
-    # Set headers
     headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {api_key}'
     }
 
     try:
-        # Make the request
         response = requests.put(
             'https://api.sendgrid.com/v3/marketing/contacts',
             headers=headers,
@@ -131,13 +131,11 @@ def subscribe():
             return jsonify({'error': response.text, 'message': 'An error occurred please try again later.'}), response.status_code
 
     except Exception as e:
-        # Prepare exception details for debugging
         error_details = {
             'error': str(e),
             'traceback': traceback.format_exc()
         }
 
-        # Return detailed error response
         return jsonify({'message': 'An error occurred please try again later.', **error_details}), 500
 
 
